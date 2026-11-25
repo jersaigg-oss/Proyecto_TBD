@@ -41,6 +41,8 @@ public class Ventana_Cliente extends javax.swing.JFrame {
         jB_Eliminar = new javax.swing.JButton();
         jB_Limpiar = new javax.swing.JButton();
         jB_Refrescar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cliente");
@@ -67,6 +69,19 @@ public class Ventana_Cliente extends javax.swing.JFrame {
 
         jB_Refrescar.setText("Refrescar");
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Nombre", "Apellido", "Dirección", "Registro", "Sucursal"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -74,6 +89,7 @@ public class Ventana_Cliente extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jL_Sucursal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -100,7 +116,7 @@ public class Ventana_Cliente extends javax.swing.JFrame {
                         .addComponent(jB_Limpiar)
                         .addGap(18, 18, 18)
                         .addComponent(jB_Refrescar)
-                        .addGap(0, 15, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -129,7 +145,9 @@ public class Ventana_Cliente extends javax.swing.JFrame {
                     .addComponent(jB_Eliminar)
                     .addComponent(jB_Limpiar)
                     .addComponent(jB_Refrescar))
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -178,9 +196,11 @@ public class Ventana_Cliente extends javax.swing.JFrame {
     private javax.swing.JLabel jL_Direccion;
     private javax.swing.JLabel jL_Nombre;
     private javax.swing.JLabel jL_Sucursal;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTF_Apellido;
     private javax.swing.JTextField jTF_Direccion;
     private javax.swing.JTextField jTF_Nombre;
     private javax.swing.JTextField jTF_Sucursal;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

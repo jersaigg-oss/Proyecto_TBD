@@ -38,12 +38,14 @@ public class Ventana_Peliculas extends javax.swing.JFrame {
         jL_AlquilerD = new javax.swing.JLabel();
         jL_Director = new javax.swing.JLabel();
         jL_Coste = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jB_AgregarP = new javax.swing.JButton();
+        jB_EliminarP = new javax.swing.JButton();
+        jB_AgregarCopia = new javax.swing.JButton();
+        jB_Refrescar = new javax.swing.JButton();
         jL_SucursalC = new javax.swing.JLabel();
         jT_SucursalC = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Peliculas");
@@ -58,15 +60,28 @@ public class Ventana_Peliculas extends javax.swing.JFrame {
 
         jL_Coste.setText("Coste: ");
 
-        jButton1.setText("Agregar pelicula");
+        jB_AgregarP.setText("Agregar pelicula");
 
-        jButton2.setText("Eliminar pelicula");
+        jB_EliminarP.setText("Eliminar pelicula");
 
-        jButton3.setText("Agregar copia a la sucursal elegida");
+        jB_AgregarCopia.setText("Agregar copia a la sucursal elegida");
 
-        jButton4.setText("Refrescar");
+        jB_Refrescar.setText("Refrescar");
 
         jL_SucursalC.setText("Sucursal (para copias): ");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Titulo", "Cattegoria", "Alq. diario", "Director", "Costo", "Copias"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -75,6 +90,7 @@ public class Ventana_Peliculas extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jL_Coste, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -96,16 +112,16 @@ public class Ventana_Peliculas extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1)
+                                .addComponent(jB_AgregarP)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton2))
+                                .addComponent(jB_EliminarP))
                             .addComponent(jL_SucursalC))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton3)
+                                .addComponent(jB_AgregarCopia)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton4)
+                                .addComponent(jB_Refrescar)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(jT_SucursalC))))
                 .addContainerGap())
@@ -139,11 +155,13 @@ public class Ventana_Peliculas extends javax.swing.JFrame {
                     .addComponent(jT_SucursalC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
-                .addContainerGap(46, Short.MAX_VALUE))
+                    .addComponent(jB_AgregarP)
+                    .addComponent(jB_EliminarP)
+                    .addComponent(jB_AgregarCopia)
+                    .addComponent(jB_Refrescar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -175,21 +193,23 @@ public class Ventana_Peliculas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jB_AgregarCopia;
+    private javax.swing.JButton jB_AgregarP;
+    private javax.swing.JButton jB_EliminarP;
+    private javax.swing.JButton jB_Refrescar;
     private javax.swing.JLabel jL_AlquilerD;
     private javax.swing.JLabel jL_Categoria;
     private javax.swing.JLabel jL_Coste;
     private javax.swing.JLabel jL_Director;
     private javax.swing.JLabel jL_SucursalC;
     private javax.swing.JLabel jL_Titulo;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jT_AlquilerDiario;
     private javax.swing.JTextField jT_Categoria;
     private javax.swing.JTextField jT_Coste;
     private javax.swing.JTextField jT_Director;
     private javax.swing.JTextField jT_SucursalC;
     private javax.swing.JTextField jT_Titulo;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
