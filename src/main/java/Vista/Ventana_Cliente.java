@@ -43,6 +43,7 @@ public class Ventana_Cliente extends javax.swing.JFrame {
         jB_Refrescar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cliente");
 
         jL_Nombre.setText("Nombre: ");
 
