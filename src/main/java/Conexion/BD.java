@@ -4,10 +4,54 @@
  */
 package Conexion;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Gemit
  */
 public class BD {
+    
+    // SELECT
+    public static List<Object[]> consultar(String sql, Object... params) throws SQLException {
+        try (Connection c = ConexionBD.get(); PreparedStatement ps = c.prepareStatement(sql)) {
+            asignar(ps, params);
+            try (ResultSet rs = ps.executeQuery()) {
+                int n = rs.getMetaData().getColumnCount();
+                List<Object[]> filas = new ArrayList<>();
+                while (rs.next()) {
+                    Object[] f = new Object[n];
+                    for (int i = 0; i < n; i++) {
+                        String s = rs.getString(i + 1);
+                        f[i] = (s == null) ? "" : s;
+                    }
+                    filas.add(f);
+                }
+                return filas;
+            }
+        }
+    }
+    
+    // Ejecuta INSERT / UPDATE / DELETE.
+    public static int ejecutar(String sql, Object... params) throws SQLException {
+        try (Connection c = ConexionBD.get(); PreparedStatement ps = c.prepareStatement(sql)) {
+            asignar(ps, params);
+            return ps.executeUpdate();
+        }
+    }
+    
+
+    
+    
+    
+
+    private static void asignar(PreparedStatement ps, Object[] params) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }
