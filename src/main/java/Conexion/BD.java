@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,8 +60,14 @@ public class BD {
     
     
 
-    private static void asignar(PreparedStatement ps, Object[] params) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    private static void asignar(PreparedStatement ps, Object[] params) throws SQLException {
+        for (int i = 0; i < params.length; i++) {
+            if (params[i] == null) {
+                ps.setNull(i + 1, Types.VARCHAR);
+            } else {
+                ps.setObject(i + 1, params[i]);
+            }
+        }
     }
     
 }
