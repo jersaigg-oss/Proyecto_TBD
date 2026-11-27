@@ -80,6 +80,37 @@ public class AlquilerDAO {
         }
     }
     
+    public void devolver(int idAlquiler) throws SQLException {
+        try (Connection con = ConexionBD.get()) {
+            con.setAutoCommit(false);
+            try {
+                int idCopia;
+                try (PreparedStatement ps = con.prepareStatement(
+                        "SELECT idPelicula FROM Alquiler WHERE idAlquiler = ? AND fecha_Devolucion IS NULL")) {
+                    ps.setInt(1, idAlquiler);
+                    try (ResultSet rs = ps.executeQuery()) {
+                        if (!rs.next()) {
+                            throw new SQLException("El alquiler no existe o ya fue devuelto.");
+                        }
+                        idCopia = rs.getInt(1);
+                    }
+                }
+
+                try (PreparedStatement ps = con.prepareStatement(
+                        "UPDATE Alquiler SET fecha_Devolucion = SYSDATE WHERE idAlquiler = ?")) {
+                    ps.setInt(1, idAlquiler);
+                    ps.executeUpdate();
+                }
+
+                cambiarEstadoCopia(con, idCopia, "disponible");
+                con.commit();
+            } catch (SQLException e) {
+                con.rollback();
+                throw e;
+            }
+        }
+    }
+    
     
     
     
