@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class BD {
     
-    // SELECT
+    // SELECT y regresa cada fila como arreglo de textos
     public static List<Object[]> consultar(String sql, Object... params) throws SQLException {
         try (Connection c = ConexionBD.get(); PreparedStatement ps = c.prepareStatement(sql)) {
             asignar(ps, params);
@@ -45,6 +45,15 @@ public class BD {
         }
     }
     
+    
+    //SELECT de dos columnas (id, texto) para llenar combos
+    public static List<Item> items(String sql, Object... params) throws SQLException {
+        List<Item> lista = new ArrayList<>();
+        for (Object[] f : consultar(sql, params)) {
+            lista.add(new Item(Integer.parseInt((String) f[0]), (String) f[1]));
+        }
+        return lista;
+    }
 
     
     
